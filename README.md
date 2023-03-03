@@ -1,5 +1,11 @@
 <h1>A Portable Software Application. With The Centric Focus Of Providing Detailed Reports On Specific Geographical Demographics Provided By An Organisational Database</h1>
+<hr/>
 
+* ![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/josephm89/sem/main.yml?branch=master&label=master&style=flat-square)
+* ![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/josephm89/sem/main.yml?branch=develop&label=develop&style=flat-square)
+* ![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/josephm89/sem/main.yml?branch=release&label=release&style=flat-square)
+* [![LICENSE](https://img.shields.io/github/license/josephm89/sem.svg?style=flat-square)](https://github.com/josephm89/sem/blob/master/LICENSE)
+* [![Releases](https://img.shields.io/github/release/josephm89/sem/all.svg?style=flat-square)](https://github.com/josephm89/sem/releases)
 <h2>Our Approach</h2>
 <p>To achieve the desired reports, our team will focus on the creating the desired software via the following steps:</p>
 <ul>
@@ -9,6 +15,8 @@
   <li>Implementing the report generation functionality and testing it against the requirements.</li>
   <li>Refining and debugging the solution as needed, utilising develop, release, and master branches.</li>
 </ul>
+
+
 
 <h2>Project Workflow</h2>
 <p>Our project utilises the renowned Gitflow version control workflow consisting of designing our software within three main Github branches: master, develop, and release.</p>
