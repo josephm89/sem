@@ -2,7 +2,15 @@ package com.napier.sem;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
+/**
+ *
+ * Represents our application.
+ * This is where we run generic functions and database functions.
+ * @author logan, joseph
+ *
+ */
 public class App
 {
     /**
@@ -35,7 +43,7 @@ public class App
                 // Wait a bit for db to start
                 Thread.sleep(30000);
                 // Connect to database
-                con = DriverManager.getConnection("jdbc:mysql://db:3306/employees?useSSL=false", "root", "example");
+                con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "example");
                 System.out.println("Successfully connected");
                 break;
             }
@@ -69,6 +77,8 @@ public class App
             }
         }
     }
+
+    /*
 
     public Employee getEmployee(int ID)
     {
@@ -117,49 +127,15 @@ public class App
                             + "Manager: " + emp.manager + "\n");
         }
     }
-    /**
+
      * Gets all the current employees and salaries.
      * @return A list of all employees and salaries, or null if there is an error.
-     */
-    public ArrayList<Employee> getAllSalaries()
-    {
-        try
-        {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect =
-                    "SELECT employees.emp_no, employees.first_name, employees.last_name, salaries.salary "
-                            + "FROM employees, salaries "
-                            + "WHERE employees.emp_no = salaries.emp_no AND salaries.to_date = '9999-01-01' "
-                            + "ORDER BY employees.emp_no ASC";
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            // Extract employee information
-            ArrayList<Employee> employees = new ArrayList<Employee>();
-            while (rset.next())
-            {
-                Employee emp = new Employee();
-                emp.emp_no = rset.getInt("employees.emp_no");
-                emp.first_name = rset.getString("employees.first_name");
-                emp.last_name = rset.getString("employees.last_name");
-                emp.salary = rset.getInt("salaries.salary");
-                employees.add(emp);
-            }
-            return employees;
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get salary details");
-            return null;
-        }
-    }
+*/
 
-    /**
+    /*
      * Gets all the current employees and salaries within a role. //only Engineers now
      * @return A list of all the engineer employees and salaries, or null if there is an error.
-     */
+
     public ArrayList<Employee> getSalariesByTitle()
     {
         try
@@ -199,24 +175,31 @@ public class App
         }
     }
 
-    /**
-     * Prints a list of employees.
-     * @param employees The list of employees to print.
-     */
-    public void printSalaries(ArrayList<Employee> employees)
-    {
-        // Print header
-        System.out.println(String.format("%-10s %-15s %-20s %-8s", "Emp No", "First Name", "Last Name", "Salary"));
-        // Loop over all employees in the list
-        for (Employee emp : employees)
-        {
-            String emp_string =
-                    String.format("%-10s %-15s %-20s %-8s",
-                            emp.emp_no, emp.first_name, emp.last_name, emp.salary);
-            System.out.println(emp_string);
-        }
-    }
+    */
 
+    //For generic use in switch statements.
+    /*
+    public static int retrieveInput(String options)
+    {
+
+        String option = 0;
+
+        while(option <1 || option > options)
+        {
+
+            Scanner input = new Scanner(System.in);  // Create a Scanner object
+            System.out.println("Enter choice:");
+
+            option = input.nextLine();  // Read user input
+            System.out.println("Username is: " + userName);  // Output user input
+
+        }
+
+        return option;
+
+
+    }
+    */
 
     public static void main(String[] args)
     {
@@ -226,17 +209,21 @@ public class App
         // Connect to database
         a.connect();
 
-        // Extract employee salary information
-        ArrayList<Employee> employees = a.getAllSalaries();
+        //Create menu here
+
+
+        // Extract all countries
+        System.out.println("Getting country");
+        ArrayList<Country> countries = Country.getAllCountries(a.con);
 
         // Extract employee salary information by their title
-        ArrayList<Employee> employeesByTitle = a.getSalariesByTitle();
+        //ArrayList<Employee> employeesByTitle = a.getSalariesByTitle();
 
-        // Test the size of the returned data - should be 240124
-        System.out.println(employees.size());
+        System.out.println("Printing country");
+        Country.printCountries(countries);
 
         // Test the size of the returned data -
-        System.out.println(employeesByTitle.size());
+        //System.out.println(employeesByTitle.size());
 
         // Disconnect from database
         a.disconnect();
