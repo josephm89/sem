@@ -45,11 +45,17 @@ public class Country
     /**
      *
      * @param con the database we are connected to
+     * @param location the grouping used for where to select the countries from (region/continent)
+     * @param target the target region/continent to select the countries of
+     * @param limit the number of entries to retrieve from db (0 means all entries)
      * @return an arraylist of the countries in the database
      * @since 0.1.1.0
      */
-    static ArrayList<Country> getAllCountries(Connection con)
+    static ArrayList<Country> getAllCountries(Connection con, String location, String target, int limit)
     {
+
+        System.out.println("Getting countries");
+
         try
         {
             // Create an SQL statement
@@ -60,20 +66,35 @@ public class Country
                             + "FROM country "
                             + "LEFT JOIN city "
                             + "ON country.Capital = city.ID ";
-                            /*
-                            Use this idea for requirements like:
-                            All the countries in a continent organised by largest population to smallest.
-                            All the countries in a region organised by largest population to smallest.
 
-                            And you can also implement this idea at the end with LIMIT or whatever the MYSQL version is to do the top 'n' populated
-                            if(true)
+                            if(!location.isEmpty())
                             {
 
-                                strSelect = strSelect + "WHERE continent = 'Europe' ";
+                                if(location.equals("Continent"))
+                                {
+
+                                    strSelect = strSelect + "WHERE Continent = '" + target + "' ";
+
+                                }
+
+                                else
+                                {
+
+                                    strSelect = strSelect + "WHERE region = '" + target + "'";
+
+                                }
 
                             }
-                            */
-                            strSelect = strSelect + "ORDER BY country.Population DESC";
+
+                            strSelect = strSelect + "ORDER BY country.Population DESC ";
+
+                            if(limit != 0)
+                            {
+
+                                strSelect = strSelect + "LIMIT " + limit;
+
+                            }
+
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract employee information
@@ -119,12 +140,14 @@ public class Country
 
     /**
      *
-     * @param countries from the output of the sql query
+     * @param countries arraylist from the output of an  sql query
      * @return nothing, it creates output within the function
      * @since 0.1.1.0
      */
     static void printCountries(ArrayList<Country> countries)
     {
+
+        System.out.println("Printing countries\n");
 
         for(Country country : countries)
         {

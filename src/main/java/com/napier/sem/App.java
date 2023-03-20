@@ -2,7 +2,9 @@ package com.napier.sem;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
+import java.util.List;
 
 /**
  *
@@ -177,29 +179,34 @@ public class App
 
     */
 
-    //For generic use in switch statements.
     /*
-    public static int retrieveInput(String options)
+    public static String targetInput()
     {
 
-        String option = 0;
+        System.out.println("Please enter a location to produce a report on:\n");
+        Scanner input = new Scanner(System.in);  // Create a Scanner object
+        return input.next();  // Read user input
 
-        while(option <1 || option > options)
-        {
+    }
 
-            Scanner input = new Scanner(System.in);  // Create a Scanner object
-            System.out.println("Enter choice:");
+    //For generic use in switch statements.
+    public static Integer menuInput()
+    {
 
-            option = input.nextLine();  // Read user input
-            System.out.println("Username is: " + userName);  // Output user input
+        int option;
 
-        }
+        System.out.println("Enter choice:");
+
+        Scanner input = new Scanner(System.in);  // Create a Scanner object
+        while(! input.hasNext()) { }
+        option = Integer.parseInt(input.next());  // Read user input
+        System.out.println("");
 
         return option;
 
-
     }
-    */
+
+     */
 
     public static void main(String[] args)
     {
@@ -210,22 +217,131 @@ public class App
         a.connect();
 
         //Create menu here
+        System.out.println("World Database!\n");
+
+        String target = "Africa";
+        ArrayList<Country> countries = Country.getAllCountries(a.con, "Continent", target, 0);
+        Country.printCountries(countries);
+
+        target = "Western Africa";
+        countries = Country.getAllCountries(a.con, "Region", target, 0);
+        Country.printCountries(countries);
+
+        countries = Country.getAllCountries(a.con, "", target, 3);
+        Country.printCountries(countries);
+
+        /*
+
+        Integer report = 0;
+
+        while(report != 6)
+        {
+
+            System.out.println("What report would you like to produce?");
+            System.out.println("1. Country report");
+            System.out.println("2. City report");
+            System.out.println("3. Capital report");
+            System.out.println("4. Population report");
+            System.out.println("5. Language report");
+            System.out.println("6. Exit\n");
+
+            report = menuInput();
+
+            switch(report) {
+
+                //Country report
+                case 1:
+
+                    while(report != 4)
+                    {
+
+                        System.out.println("What kind of country report would you like to produce?");
+                        System.out.println("1. Countries of the world");
+                        System.out.println("2. Countries of a continent");
+                        System.out.println("3. Countries of a region");
+                        System.out.println("4. Back to menu\n");
+
+                        report = menuInput();
+
+                        switch(report) {
+
+                            case 1:
+
+                                ArrayList<Country> countries = Country.getAllCountries(a.con, "", "");
+                                Country.printCountries(countries);
+
+                                break;
+                            //World case end
+
+                            case 2:
+
+                                String target = targetInput();
+                                countries = Country.getAllCountries(a.con, "Continent", target);
+                                Country.printCountries(countries);
+
+                                break;
+                            //Continent case end
+
+                            case 3:
+
+                                break;
+                            //Region case end
+
+                        }
+
+                        System.out.println("");
+
+                    }
+
+                    break;
+                //Country case end
 
 
-        // Extract all countries
-        System.out.println("Getting country");
-        ArrayList<Country> countries = Country.getAllCountries(a.con);
+
+                //City report
+                case 2:
+
+                    break;
+                //City case end
+
+
+
+                //Capital report
+                case 3:
+
+                    break;
+                //Capital case end
+
+
+
+                //Population report
+                case 4:
+
+                    break;
+                //Population case end
+
+
+
+                //Language report
+                case 5:
+
+                    break;
+                //Language case end
+
+            }
+
+        }
+
+         */
 
         // Extract employee salary information by their title
         //ArrayList<Employee> employeesByTitle = a.getSalariesByTitle();
-
-        System.out.println("Printing country");
-        Country.printCountries(countries);
 
         // Test the size of the returned data -
         //System.out.println(employeesByTitle.size());
 
         // Disconnect from database
         a.disconnect();
+
     }
 }
