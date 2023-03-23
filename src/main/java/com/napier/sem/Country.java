@@ -43,6 +43,12 @@ public class Country
 
 
     /**
+     *
+     * <p>
+     *     Runs our query on our database which we can then operate functions on.
+     *     It changes the returned results based on the inputs we provide for it.
+     * </p>
+     *
      * @param con the database we are connected to
      * @param location the grouping used for where to select the countries from (region/continent)
      * @param target the target region/continent to select the countries of
@@ -121,6 +127,10 @@ public class Country
 
     /**
      *
+     * <p>
+     *     Prints the given arraylist of countries, which are gathered from our database queries.
+     * </p>
+     *
      * @param countries arraylist from the output of an sql query
      * @since 0.1.1.0
      */
@@ -131,6 +141,7 @@ public class Country
         {
 
             System.out.println("No countries");
+            System.out.println();
             return;
 
         }

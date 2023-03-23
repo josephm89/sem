@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 /**
  * Represents a city which we use for city reports.
- * @author logan, Jack
+ * @author logan, jack
  */
 public class City {
     /**
@@ -31,15 +31,20 @@ public class City {
     public int population;
 
     /**
-     * @param con        the database we are connected to
-     * @param location   the grouping used for where to select the cities from (country)
+     *
+     * <p>
+     *     Runs our query on our database which we can then operate functions on.
+     *     It changes the returned results based on the inputs we provide for it.
+     * </p>
+     * @param con the database we are connected to
+     * @param location the grouping used for where to select the cities from (country)
      * @param cityTarget the target country to select the cities of
-     * @param limit      the number of entries to retrieve from db (0 means all entries)
+     * @param limit the number of entries to retrieve from db (0 means all entries)
      * @return an arraylist of the cities in the database
-     * @since 0.1.1.0
+     * @since 0.1.1.3
      */
 
-    static ArrayList<City> getAllCountries(Connection con, String location, String cityTarget, int limit) {
+    static ArrayList<City> getAllCities(Connection con, String location, String cityTarget, int limit) {
 
         System.out.println("Getting cities");
 
@@ -48,23 +53,39 @@ public class City {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT city.Name, city.Country, city.District, city.Population " +
-                            "FROM city" +
-                            " LEFT JOIN country" +
-                            "on country.Capital = city.ID";
+                    "SELECT city.Name, country.Name, IF(city.District = '–', 'N/A', city.District) AS District, city.Population " +
+                            "FROM city " +
+                            "LEFT JOIN country " +
+                            "ON city.CountryCode = country.Code ";
 
 
             if (!location.isEmpty()) {
 
-                if (location.equals("Country")) {
+                if (location.equals("Country"))
+                {
 
-                    strSelect = strSelect + "WHERE Country = '" + cityTarget + "' ";
+                    strSelect = strSelect + "WHERE country.Name = '" + cityTarget + "' ";
 
                 }
+
+                else if (location.equals("Region"))
+                {
+
+                    strSelect = strSelect + "WHERE country.Region = '" + cityTarget + "' ";
+
+                }
+
+                else if (location.equals("District"))
+                {
+
+                    strSelect = strSelect + "WHERE District = '" + cityTarget + "' ";
+
+                }
+
                 else
                 {
 
-                    strSelect = strSelect + "WHERE District = '" + cityTarget + "'";
+                    strSelect = strSelect + "WHERE country.Continent = '" + cityTarget + "' ";
 
                 }
 
@@ -85,8 +106,8 @@ public class City {
             while (rset.next()) {
                 City city = new City();
                 city.name = rset.getString("City.Name");
-                city.country = rset.getString("City.Country");
-                city.district = rset.getString("City.District");
+                city.country = rset.getString("Country.Name");
+                city.district = rset.getString("District");
                 city.population = rset.getInt("City.Population");
                 cities.add(city);
             }
@@ -99,19 +120,35 @@ public class City {
     }
 
     /**
+     *
+     * <p>
+     *     Prints the given arraylist of cities, which are gathered from our database queries.
+     * </p>
+     *
      * @param cities arraylist from the output of an sql query
-     * @since 0.1.1.0
+     * @since 0.1.1.3
      */
     static void printCities(ArrayList<City> cities) {
+
+        if(cities == null || cities.isEmpty())
+        {
+
+            System.out.println("No cities");
+            System.out.println();
+            return;
+
+        }
 
         System.out.println("Printing cities\n");
 
         for (City city : cities) {
 
-            String formatter = String.format("%-6s %-38s %-18s %-26s %-10s %-10s", city.name, city.country, city.district, city.population);
+            String formatter = String.format("%-26s %-38s %-20s %-9s", city.name, city.country, city.district, city.population);
             System.out.println(formatter);
 
         }
+
+        System.out.println();
 
     }
 

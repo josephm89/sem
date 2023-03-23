@@ -7,18 +7,21 @@ import java.util.ArrayList;
  *
  * Represents our application.
  * This is where we run generic functions and database functions.
- * @author logan, joseph
+ * @author logan, joseph, jack
  *
  */
 public class App
 {
     /**
      * Connection to MySQL database.
+     * Used for passing into functions.
      */
     private Connection con = null;
 
     /**
+     * <p>
      * Connect to the MySQL database.
+     * </p>
      */
     public void connect()
     {
@@ -59,7 +62,9 @@ public class App
     }
 
     /**
+     * <p>
      * Disconnect from the MySQL database.
+     * </p>
      */
     public void disconnect()
     {
@@ -98,6 +103,26 @@ public class App
 
         countries = Country.getAllCountries(a.con, "", target, 3);
         Country.printCountries(countries);
+
+        target = "France";
+        ArrayList<City> cities = City.getAllCities(a.con, "Country", target, 0);
+        City.printCities(cities);
+
+        target = "Zuid-Holland";
+        cities = City.getAllCities(a.con, "District", target, 0);
+        City.printCities(cities);
+
+        target = "Africa";
+        cities = City.getAllCities(a.con, "Continent", target, 3);
+        City.printCities(cities);
+
+        target = "Western Africa";
+        cities = City.getAllCities(a.con, "Region", target, 3);
+        City.printCities(cities);
+
+        cities = City.getAllCities(a.con, "", "", 3);
+        City.printCities(cities);
+
 
         // Disconnect from database
         a.disconnect();

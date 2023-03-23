@@ -40,3 +40,37 @@ class CountryTest {
     }
 
 }
+
+class CityTest {
+
+    @Test
+    void printCitiesTestNull() {
+
+        City.printCities(null);
+
+    }
+
+    @Test
+    void printCountriesTestEmpty()
+    {
+
+        ArrayList<City> cities = new ArrayList<>();
+        City.printCities(cities);
+
+    }
+
+    @Test
+    void printCountriesTest()
+    {
+
+        ArrayList<City> cities = new ArrayList<>();
+        City city = new City();
+        city.country = "Pog Fish";
+        city.district = "Fish";
+        city.name = "Pogging";
+        city.population = 69;
+        City.printCities(cities);
+
+    }
+
+}
