@@ -43,7 +43,6 @@ public class Country
 
 
     /**
-     *
      * @param con the database we are connected to
      * @param location the grouping used for where to select the countries from (region/continent)
      * @param target the target region/continent to select the countries of
@@ -128,6 +127,14 @@ public class Country
     static void printCountries(ArrayList<Country> countries)
     {
 
+        if(countries == null || countries.isEmpty())
+        {
+
+            System.out.println("No countries");
+            return;
+
+        }
+
         System.out.println("Printing countries\n");
 
         for(Country country : countries)
@@ -137,6 +144,8 @@ public class Country
             System.out.println(formatter);
 
         }
+
+        System.out.println();
 
     }
 
