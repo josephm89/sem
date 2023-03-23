@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 /**
  * Represents a city which we use for city reports.
- * @author logan
+ * @author logan, Jack
  */
 public class City {
     /**
@@ -32,16 +32,16 @@ public class City {
 
     /**
      * @param con        the database we are connected to
-     * @param location   the grouping used for where to select the countries from (region/continent)
-     * @param cityTarget the target region/continent to select the countries of
+     * @param location   the grouping used for where to select the cities from (country)
+     * @param cityTarget the target country to select the cities of
      * @param limit      the number of entries to retrieve from db (0 means all entries)
-     * @return an arraylist of the countries in the database
+     * @return an arraylist of the cities in the database
      * @since 0.1.1.0
      */
 
     static ArrayList<City> getAllCountries(Connection con, String location, String cityTarget, int limit) {
 
-        System.out.println("Getting countries");
+        System.out.println("Getting cities");
 
         try {
             // Create an SQL statement
@@ -56,13 +56,15 @@ public class City {
 
             if (!location.isEmpty()) {
 
-                if (location.equals("Continent")) {
+                if (location.equals("Country")) {
 
-                    strSelect = strSelect + "WHERE Continent = '" + cityTarget + "' ";
+                    strSelect = strSelect + "WHERE Country = '" + cityTarget + "' ";
 
-                } else {
+                }
+                else
+                {
 
-                    strSelect = strSelect + "WHERE region = '" + cityTarget + "'";
+                    strSelect = strSelect + "WHERE District = '" + cityTarget + "'";
 
                 }
 
@@ -82,16 +84,16 @@ public class City {
             ArrayList<City> cities = new ArrayList<>();
             while (rset.next()) {
                 City city = new City();
-                city.name = rset.getString("Country.Name");
-                city.country = rset.getString("Country.Country");
-                city.district = rset.getString("Country.District");
-                city.population = rset.getInt("Country.Population");
+                city.name = rset.getString("City.Name");
+                city.country = rset.getString("City.Country");
+                city.district = rset.getString("City.District");
+                city.population = rset.getInt("City.Population");
                 cities.add(city);
             }
             return cities;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get country details");
+            System.out.println("Failed to get city details");
             return null;
         }
     }
