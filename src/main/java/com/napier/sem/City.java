@@ -80,7 +80,7 @@ public class City {
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
-            // Extract employee information
+            // Extract information
             ArrayList<City> cities = new ArrayList<>();
             while (rset.next()) {
                 City city = new City();

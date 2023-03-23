@@ -44,7 +44,7 @@ public class Capital
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT city.Name, city.Country, city.District, city.Population " +
+                    "SELECT city.Name, city.Country, city.Population " +
                             "FROM city" +
                             " RIGHT JOIN country" +
                             " on country.Capital = city.ID";
@@ -74,7 +74,7 @@ public class Capital
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
-            // Extract employee information
+            // Extract information
             ArrayList<Capital> capitals= new ArrayList<>();
             while (rset.next()) {
                 Capital capital = new Capital();
@@ -98,7 +98,7 @@ public class Capital
      */
     static void printCapitals(ArrayList<Capital> capitals) {
 
-        System.out.println("Printing capitals\n");
+        System.out.println("Printing capital\n");
 
         for (Capital city : capitals) {
 

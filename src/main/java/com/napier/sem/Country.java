@@ -97,7 +97,7 @@ public class Country
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
-            // Extract employee information
+            // Extract information
             ArrayList<Country> countries = new ArrayList<>();
             while (rset.next())
             {
