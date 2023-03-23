@@ -69,6 +69,7 @@ class CityTest {
         city.district = "Fish";
         city.name = "Pogging";
         city.population = 69;
+        cities.add(city);
         City.printCities(cities);
 
     }
