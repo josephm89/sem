@@ -1,19 +1,42 @@
 package com.napier.sem;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
-
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
 
-public class AppTest {
-    static App app;
+class CountryTest {
 
-    @BeforeAll
-    static void init() {
-        app = new App();
+    @Test
+    void printCountriesTestNull() {
+
+        Country.printCountries(null);
+
     }
-}
 
+    @Test
+    void printCountriesTestEmpty()
+    {
+
+        ArrayList<Country> countries = new ArrayList<>();
+        Country.printCountries(countries);
+
+    }
+
+    @Test
+    void printCountriesTest()
+    {
+
+        ArrayList<Country> countries = new ArrayList<>();
+        Country country = new Country();
+        country.code = "POG";
+        country.capital = "Pogging";
+        country.continent = "Meme";
+        country.name = "Pog Fish";
+        country.population = 69;
+        country.region = "Face";
+        countries.add(country);
+        Country.printCountries(countries);
+
+    }
+
+}
