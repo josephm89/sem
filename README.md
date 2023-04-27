@@ -7,13 +7,43 @@
 * [![LICENSE](https://img.shields.io/github/license/josephm89/sem.svg?style=flat-square)](https://github.com/josephm89/sem/blob/master/LICENSE)
 * [![Releases](https://img.shields.io/github/release/josephm89/sem/all.svg?style=flat-square)](https://github.com/josephm89/sem/releases)
 
-| ID | Requirement Name | Met Requirement? | Screenshot                                                                                    |
-|----|------------------|------------------|-----------------------------------------------------------------------------------------------|
-| 1  | Feature A        | Yes              | [![Screenshot A](/screenshots/1.png)](/screenshots/2.png)                                     |
-| 2  | Feature B        | No               | [![Screenshot A](/screenshots/1.png)](/screenshots/2.png)                                     |
-| 3  | Feature C        | Yes              | [![Screenshot A](/screenshots/1.png)](/screenshots/2.png)                                     |
-| 4  | Feature D        | Yes              | [![Screenshot A](/screenshots/1.png)](/screenshots/2.png)                                     |
-| 5  | Feature E        | No               | [![Screenshot A](/screenshots/1.png)](/screenshots/2.png)                                     |
+| ID | Requirement Name                                                                                            | Met Requirement? | Screenshot                                                 |
+|----|-------------------------------------------------------------------------------------------------------------|------------------|------------------------------------------------------------|
+| 1  | All the countries in the world organised by largest population to smallest.                                 | Yes              | [![Screenshot A](/screenshots/1.png)](/screenshots/2.png)  |
+| 2  | All the countries in a continent organised by largest population to smallest.                               | Yes              | [![Screenshot A](/screenshots/2.png)](/screenshots/2.png)  |
+| 3  | All the countries in a region organised by largest population to smallest.                                  | Yes              | [![Screenshot A](/screenshots/3.png)](/screenshots/2.png)  |
+| 4  | The top N populated countries in the world where N is provided by the user.                                 | Yes              | [![Screenshot A](/screenshots/4.png)](/screenshots/2.png)  |
+| 5  | The top N populated countries in a continent where N is provided by the user.                               | Yes              | [![Screenshot A](/screenshots/5.png)](/screenshots/2.png)  |
+| 6  | The top N populated countries in a region where N is provided by the user.                                  | Yes              | [![Screenshot A](/screenshots/6.png)](/screenshots/2.png)  |
+| 7  | All the cities in the world organised by largest population to smallest.                                    | Yes              | [![Screenshot A](/screenshots/7.png)](/screenshots/2.png)  |
+| 8  | All the cities in a continent organised by largest population to smallest.                                  | Yes              | [![Screenshot A](/screenshots/8.png)](/screenshots/2.png)  |
+| 9  | All the cities in a region organised by largest population to smallest.                                     | Yes              | [![Screenshot A](/screenshots/9.png)](/screenshots/2.png)  |
+| 10 | All the cities in a country organised by largest population to smallest.                                    | Yes              | [![Screenshot A](/screenshots/10.png)](/screenshots/2.png) |
+| 11 | All the cities in a district organised by largest population to smallest.                                   | Yes              | [![Screenshot A](/screenshots/11.png)](/screenshots/2.png) |
+| 12 | The top N populated cities in the world where N is provided by the user.                                    | Yes              | [![Screenshot A](/screenshots/12.png)](/screenshots/2.png) |
+| 13 | The top N populated cities in a continent where N is provided by the user.                                  | Yes              | [![Screenshot A](/screenshots/13.png)](/screenshots/2.png) |
+| 14 | The top N populated cities in a region where N is provided by the user.                                     | Yes              | [![Screenshot A](/screenshots/14.png)](/screenshots/2.png) |
+| 15 | The top N populated cities in a country where N is provided by the user.                                    | Yes              | [![Screenshot A](/screenshots/15.png)](/screenshots/2.png) |
+| 16 | The top N populated cities in a district where N is provided by the user.                                   | Yes              | [![Screenshot A](/screenshots/16.png)](/screenshots/2.png) |
+| 17 | All the capital cities in the world organised by largest population to smallest.                            | Yes              | [![Screenshot A](/screenshots/17.png)](/screenshots/2.png) |
+| 18 | All the capital cities in a continent organised by largest population to smallest.                          | Yes              | [![Screenshot A](/screenshots/19.png)](/screenshots/2.png) |
+| 19 | All the capital cities in a region organised by largest to smallest.                                        | Yes              | [![Screenshot A](/screenshots/19.png)](/screenshots/2.png) |
+| 20 | The top N populated capital cities in the world where N is provided by the user.                            | Yes              | [![Screenshot A](/screenshots/20.png)](/screenshots/2.png) |
+| 21 | The top N populated capital cities in a continent where N is provided by the user.                          | Yes              | [![Screenshot A](/screenshots/21.png)](/screenshots/2.png) |
+| 22 | The top N populated capital cities in a region where N is provided by the user.                             | Yes              | [![Screenshot A](/screenshots/22.png)](/screenshots/2.png) |
+| 23 | The population of people, people living in cities, and people not living in cities in each continent.       | No               |  |
+| 24 | The population of people, people living in cities, and people not living in cities in each region.          | No               |  |
+| 25 | The population of people, people living in cities, and people not living in cities in each country.         | No               |  |
+| 26 | The population of the world.                                                                                | No               |  |
+| 27 | The population of a continent.                                                                              | No               |  |
+| 28 | The population of a region.                                                                                 | No               |  |
+| 29 | The population of a country.                                                                                | No               |  |
+| 30 | The population of a district.                                                                               | No               |  |
+| 31 | The population of a city.                                                                                   | No               |  |
+| 32 | The number of people who speak x languages from greatest to smallest by percentage of the world population: | No               |  |
+
+<p>22/32 = 69%</p>
+
 
 <h2>Our Approach</h2>
 <p>To achieve the desired reports, our team will focus on the creating the desired software via the following steps:</p>
