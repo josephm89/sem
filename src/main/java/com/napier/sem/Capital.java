@@ -44,21 +44,22 @@ public class Capital
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT city.Name, city.Country, city.Population " +
-                            "FROM city" +
-                            " RIGHT JOIN country" +
-                            " on country.Capital = city.ID";
+                    "SELECT city.Name, country.Name, city.Population " +
+                            "FROM city " +
+                            "RIGHT JOIN country " +
+                            "on country.Capital = city.ID " +
+                            "WHERE country.Capital IS NOT NULL ";
 
 
             if (!location.isEmpty()) {
 
-                if (location.equals("Country")) {
+                if (location.equals("Continent")) {
 
-                    strSelect = strSelect + "WHERE Country = '" + capitalTarget + "' ";
+                    strSelect = strSelect + "AND Continent = '" + capitalTarget + "' ";
 
                 } else {
 
-                    strSelect = strSelect + "WHERE District = '" + capitalTarget + "'";
+                    strSelect = strSelect + "AND Region = '" + capitalTarget + "'";
 
                 }
 
@@ -78,9 +79,9 @@ public class Capital
             ArrayList<Capital> capitals= new ArrayList<>();
             while (rset.next()) {
                 Capital capital = new Capital();
-                capital.name = rset.getString("Capital.Name");
-                capital.country = rset.getString("Capital.Country");
-                capital.population = rset.getInt("Capital.Population");
+                capital.name = rset.getString("City.Name");
+                capital.country = rset.getString("Country.Name");
+                capital.population = rset.getInt("City.Population");
                 capitals.add(capital);
             }
             return capitals;
@@ -98,14 +99,25 @@ public class Capital
      */
     static void printCapitals(ArrayList<Capital> capitals) {
 
-        System.out.println("Printing capital\n");
+        if(capitals == null || capitals.isEmpty())
+        {
+
+            System.out.println("No capitals");
+            System.out.println();
+            return;
+
+        }
+
+        System.out.println("Printing capitals\n");
 
         for (Capital city : capitals) {
 
-            String formatter = String.format("%-6s %-38s %-18s %-26s %-10s %-10s", city.name, city.country, city.population);
+            String formatter = String.format("%-40s %-38s %-11s", city.name, city.country, city.population);
             System.out.println(formatter);
 
         }
+
+        System.out.println();
 
     }
 
