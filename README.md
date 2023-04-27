@@ -6,6 +6,15 @@
 * ![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/josephm89/sem/main.yml?branch=release&label=release&style=flat-square)
 * [![LICENSE](https://img.shields.io/github/license/josephm89/sem.svg?style=flat-square)](https://github.com/josephm89/sem/blob/master/LICENSE)
 * [![Releases](https://img.shields.io/github/release/josephm89/sem/all.svg?style=flat-square)](https://github.com/josephm89/sem/releases)
+
+| ID | Requirement Name | Met Requirement? | Screenshot                                                                                    |
+|----|------------------|------------------|-----------------------------------------------------------------------------------------------|
+| 1  | Feature A        | Yes              | [![Screenshot A](/screenshots/1.png)](/screenshots/2.png)                                     |
+| 2  | Feature B        | No               | [![Screenshot A](/screenshots/1.png)](/screenshots/2.png)                                     |
+| 3  | Feature C        | Yes              | [![Screenshot A](/screenshots/1.png)](/screenshots/2.png)                                     |
+| 4  | Feature D        | Yes              | [![Screenshot A](/screenshots/1.png)](/screenshots/2.png)                                     |
+| 5  | Feature E        | No               | [![Screenshot A](/screenshots/1.png)](/screenshots/2.png)                                     |
+
 <h2>Our Approach</h2>
 <p>To achieve the desired reports, our team will focus on the creating the desired software via the following steps:</p>
 <ul>
@@ -15,8 +24,6 @@
   <li>Implementing the report generation functionality and testing it against the requirements.</li>
   <li>Refining and debugging the solution as needed, utilising develop, release, and master branches.</li>
 </ul>
-
-
 
 <h2>Project Workflow</h2>
 <p>Our project utilises the renowned Gitflow version control workflow consisting of designing our software within three main Github branches: master, develop, and release.</p>
